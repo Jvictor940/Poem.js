@@ -1,27 +1,51 @@
-import React from "react";
+import React, { useState } from "react";
 
 function Poem({poem}) {
-  const {title, content, author} = poem 
-  // console.log('poem', poem)
-  // console.log({title})
+  const {title, content, author}= poem 
+  const [read, setRead] = useState(false)
 
   return (
     <div>
       <h3>{title}</h3>
       <p>{content}</p>
       <p>
-        <strong>- {author}</strong>
+        <strong>- By {author}</strong>
       </p>
-      {
-        poem.map((element) => {
-          return(
-            <Poem key={element.id} title={element.title} content={element.content} author={author.title}/>
-          )
-        })
-      }
-      <button>Mark as read</button>
+      {read ? <button onClick={() => {setRead(!read)}}>Mark as read</button> : <button onClick={() => {setRead(!read)}}>Mark as Unread</button>}
+      
     </div>
   );
 }
 
 export default Poem;
+
+
+
+
+
+
+
+
+
+
+
+// import React from "react";
+
+// function Poem(props) {
+//   const {title, content, author} = props 
+//   // console.log('poem', poem)
+//   // console.log({title})
+
+//   return (
+//     <div>
+//       <h3>{title}</h3>
+//       <p>{content}t</p>
+//       <p>
+//         <strong>- {author}</strong>
+//       </p>
+//       <button>Mark as read</button>
+//     </div>
+//   );
+// }
+
+// export default Poem;
